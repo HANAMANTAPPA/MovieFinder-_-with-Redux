@@ -1,8 +1,16 @@
-import { ADD_MOVIES, ADD_FAV, REMOVE_FAV } from "../actions";
+import {
+  ADD_MOVIES,
+  ADD_FAV,
+  REMOVE_FAV,
+  FAV_TAB,
+  MOVIE_TAB,
+} from "../actions";
 
 const initialstast = {
   list: [],
   favlist: [],
+  moviTab: true,
+  favTab: false,
 };
 
 export default function reducer(state = initialstast, action) {
@@ -17,6 +25,11 @@ export default function reducer(state = initialstast, action) {
         (movie) => movie !== action.movie
       );
       return { ...state, favlist: [...newFavList] };
+    case MOVIE_TAB:
+      return { ...state, moviTab: true, favTab: false };
+
+    case FAV_TAB:
+      return { ...state, moviTab: false, favTab: true };
     default:
       return state;
   }
