@@ -149,7 +149,7 @@ body {
   padding: 0 20px;
 }
 .movie-card .footer {
-  position: absolute;
+  /* position: absolute; */
   bottom: 0;
   display: flex;
   justify-content: space-between;
