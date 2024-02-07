@@ -1,6 +1,11 @@
-export default function reducer(state = [], action) {
+const initialstast = {
+  list: [],
+  favlist: [],
+};
+
+export default function reducer(state = initialstast, action) {
   if (action.type === "ADD_MOVIE") {
-    return action.movies;
+    return { ...state, list: action.movies };
   }
   return state;
 }
