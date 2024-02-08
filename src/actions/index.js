@@ -13,6 +13,7 @@ export const ADD_FAV = "ADD_FAV";
 export const REMOVE_FAV = "REMOVE_FAV";
 export const FAV_TAB = "FAV_TAB";
 export const MOVIE_TAB = "MOVIE_TAB";
+export const ADD_MOVIE_TOLIST = "ADD_MOVIE_TOLIST";
 
 //  action creators
 export function addmovies(movies) {
@@ -45,5 +46,12 @@ export function movieTabswitch() {
 export function favTabswitch() {
   return {
     type: FAV_TAB,
+  };
+}
+
+export function addMovietoList(movie) {
+  return {
+    type: ADD_MOVIE_TOLIST,
+    movie,
   };
 }

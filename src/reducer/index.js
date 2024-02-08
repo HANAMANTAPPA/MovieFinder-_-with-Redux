@@ -1,19 +1,22 @@
+import { combineReducers } from "redux";
+
 import {
   ADD_MOVIES,
   ADD_FAV,
   REMOVE_FAV,
   FAV_TAB,
   MOVIE_TAB,
+  ADD_MOVIE_TOLIST,
 } from "../actions";
 
-const initialstast = {
+const initialMoviestast = {
   list: [],
   favlist: [],
   moviTab: true,
   favTab: false,
 };
 
-export default function reducer(state = initialstast, action) {
+export function movies(state = initialMoviestast, action) {
   switch (action.type) {
     case ADD_MOVIES:
       return { ...state, list: action.movies };
@@ -25,6 +28,8 @@ export default function reducer(state = initialstast, action) {
         (movie) => movie !== action.movie
       );
       return { ...state, favlist: [...newFavList] };
+    case ADD_MOVIE_TOLIST:
+      return { ...state, list: [action.movie, state.list] };
     case MOVIE_TAB:
       return { ...state, moviTab: true, favTab: false };
 
@@ -34,3 +39,27 @@ export default function reducer(state = initialstast, action) {
       return state;
   }
 }
+
+const initialsearchState = {
+  result: {},
+};
+export function search(state = initialsearchState, action) {
+  return state;
+}
+
+// const initialRootState = {
+//   movies: initialMoviestast,
+//   search: initialsearchState,
+
+// };
+// export default function rootReducer(state = initialRootState, action) {
+//   return {
+//     movies: movies(state.movies, action),
+//     search: search(state.search, action),
+//   };
+// }
+
+export default combineReducers({
+  movies,
+  search,
+});

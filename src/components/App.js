@@ -23,7 +23,8 @@ class App extends React.Component {
   }
 
   isMovieFav = (movie) => {
-    const { favlist } = this.props.store.getState();
+    const { movies } = this.props.store.getState();
+    const { favlist } = movies;
     const index = favlist.indexOf(movie);
     if (index !== -1) {
       return true;
@@ -38,7 +39,8 @@ class App extends React.Component {
     this.props.store.dispatch(favTabswitch());
   };
   render() {
-    const { list, favlist, moviTab } = this.props.store.getState();
+    const { movies } = this.props.store.getState();
+    const { list, favlist, moviTab } = movies;
     const iteratingList = moviTab ? list : favlist;
     console.log("RENDER");
     return (
